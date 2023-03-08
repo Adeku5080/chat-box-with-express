@@ -3,10 +3,12 @@ const app = express()
 const path = require('path')
 const server = require("http").createServer(app)
 const io = require('socket.io')(server,{cors:{origin:'*'}})
+require("dotenv").config();
+const connect = require("./database/connect")
 
 const PORT = 4000
 
-// app.use(express.static('public'))
+connect(process.env.MONGO_URI)
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname,"public/index.html"));
