@@ -1,14 +1,17 @@
 const express = require("express")
 const app = express()
 const path = require('path')
+const db = require("./src/models")
 const server = require("http").createServer(app)
 const io = require('socket.io')(server,{cors:{origin:'*'}})
 require("dotenv").config();
-const connect = require("./database/connect")
+// const connect = require("./database/connect")
 
-const PORT = 4000
+// const PORT = 4000
 
-connect(process.env.MONGO_URI)
+(async ()=>{
+   await db.sequelize.sync()
+})()
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname,"public/index.html"));
@@ -24,6 +27,7 @@ app.get('/', function(req, res) {
     });
  });
 
+ const PORT = 4000
 server.listen(PORT,()=>{
     console.log(`now listening on port ${PORT}`)
 })

@@ -14,7 +14,9 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^7.0.1",
+    "mysql2": "^3.2.0",
     "node-nlp": "^4.26.1",
+    "sequelize": "^6.29.2",
     "socket.io": "^4.6.1"
   },
   "devDependencies": {
