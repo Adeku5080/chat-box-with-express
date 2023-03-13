@@ -10,5 +10,5 @@ const db = {}
 db.sequelize=  sequelize; 
 db.models = {};
 db.models.Command = require("./Command")(sequelize,Sequelize.DataTypes);
-
+db.models.Menu = require("./Menu")(sequelize,Sequelize.DataTypes)
 module.exports = db
