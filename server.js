@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const cors = require("cors")
 const path = require("path");
 const commandRouter = require("./routes/commands");
 const db = require("./src/models");
@@ -19,6 +20,7 @@ require("dotenv").config();
 
 //middlewares
 app.use(morgan("dev"));
+app.use(cors())
 app.use(express.json());
 
 app.get("/", function (req, res) {
